@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>بانگێشتنامەی هاوسەرگیری 3D</title>
+    <title>بانگێشتنامەی هاوسەرگیری - رامان و سارا</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Vazirmatn:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -12,306 +12,124 @@
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         
         html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            font-family: 'Vazirmatn', sans-serif; 
-            background: #0d060e;
-        }
-
-        /* BACKGROUND PETALS */
-        .petals-container {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none; overflow: hidden; z-index: 100;
-        }
-
-        .petal {
-            position: absolute;
-            background: #f4acb7;
-            border-radius: 150% 0 150% 0;
-            opacity: 0.5;
-            animation: animate-petal 8s linear infinite;
-        }
-
-        @keyframes animate-petal {
-            0% { opacity: 0; top: -10%; transform: translateX(0) rotate(0deg); }
-            10% { opacity: 0.7; }
-            100% { opacity: 0; top: 105%; transform: translateX(70px) rotate(360deg); }
+            width: 100%; height: 100%; overflow: hidden;
+            font-family: 'Vazirmatn', sans-serif; background: #0d060e;
         }
 
         .main-wrapper {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 100vw; height: 100vh;
+            display: flex; justify-content: center; align-items: center;
             background: radial-gradient(circle, #230d1d 0%, #050205 100%);
             perspective: 1000px;
         }
 
-        /* 3D TILT CONTAINER */
         .envelope-container {
-            width: 100%;
-            height: 100%;
-            max-width: 440px;
-            max-height: 850px;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease-out;
+            width: 100%; height: 100%; max-width: 440px; max-height: 850px;
+            position: relative; transform-style: preserve-3d; transition: transform 0.1s ease-out;
         }
 
         .envelope {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            background: #fdfbf7;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.5);
+            width: 100%; height: 100%; position: relative;
+            background: #fdfbf7; overflow: hidden; border-radius: 12px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
             transform-style: preserve-3d;
+            border: 2px solid #e6d8cb;
         }
 
-        /* ENVELOPE FLAPS WITH 3D SHADOWS */
-        .flap-top {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 50%;
-            background: linear-gradient(135deg, #faf6f0 0%, #e6d8cb 100%);
-            clip-path: polygon(0 0, 100% 0, 50% 100%);
-            transform-origin: top;
-            transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.2s, z-index 0.1s ease 0.9s;
-            z-index: 5;
-            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.25));
-        }
-
-        .flap-bottom {
-            position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 52%;
-            background: linear-gradient(0deg, #f4ebe0 0%, #dccac0 100%);
-            clip-path: polygon(0 100%, 100% 100%, 50% 0);
-            z-index: 4;
-            filter: drop-shadow(0 -5px 10px rgba(0,0,0,0.15));
-        }
-
-        .flap-left {
-            position: absolute;
-            top: 0; left: 0; width: 52%; height: 100%;
-            background: linear-gradient(90deg, #f0e4d8 0%, #d8c4b6 100%);
-            clip-path: polygon(0 0, 0 100%, 100% 50%);
-            z-index: 3;
-            filter: drop-shadow(5px 0 10px rgba(0,0,0,0.15));
-        }
-
-        .flap-right {
-            position: absolute;
-            top: 0; right: 0; width: 52%; height: 100%;
-            background: linear-gradient(-90deg, #f0e4d8 0%, #d8c4b6 100%);
-            clip-path: polygon(100% 0, 100% 100%, 0 50%);
-            z-index: 3;
-            filter: drop-shadow(-5px 0 10px rgba(0,0,0,0.15));
-        }
-
-        /* 3D EMBOSSED FLORAL PATTERN OVERLAY */
-        .lace-overlay {
+        .envelope-cover {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 6;
-            opacity: 0.9;
-            filter: drop-shadow(2px 2px 0px rgba(255,255,255,0.95)) drop-shadow(-1.5px -1.5px 2px rgba(90,70,60,0.4));
+            background: linear-gradient(135deg, #fbf7f0 0%, #f0e4d8 100%);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 5;
+            transition: all 0.8s ease;
         }
 
-        /* 3D WAX SEAL */
-        .wax-seal {
+        .cover-border {
             position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -55%) translateZ(30px);
-            width: 105px;
-            height: 98px;
-            background: radial-gradient(circle, #851822 0%, #4a060d 100%);
-            border-radius: 48% 52% 51% 49% / 53% 47% 53% 47%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid #d49a5b;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7), inset 0 0 15px rgba(0,0,0,0.8);
-            cursor: pointer;
-            z-index: 8;
-            transition: all 0.4s ease;
+            top: 15px; left: 15px; right: 15px; bottom: 15px;
+            border: 1px dashed #d4a373;
+            border-radius: 8px;
+            pointer-events: none;
         }
 
-        .wax-seal:hover {
-            transform: translate(-50%, -55%) translateZ(40px) scale(1.06);
+        .wax-seal {
+            width: 90px; height: 90px;
+            background: radial-gradient(circle, #851822 0%, #4a060d 100%);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            border: 3px solid #d4a373;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
         }
+
+        .wax-seal:hover { transform: scale(1.05); }
 
         .wax-seal-text {
             font-family: 'Great Vibes', cursive;
-            font-size: 36px;
-            color: #fce7c8;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
-            letter-spacing: 3px;
-            direction: ltr;
-            white-space: nowrap;
+            font-size: 32px; color: #fce7c8;
+            letter-spacing: 2px; direction: ltr;
         }
 
-        /* "بیکەوە" BUTTON */
         .open-btn {
-            position: absolute;
-            top: calc(50% + 55px);
-            left: 50%;
-            transform: translateX(-50%) translateZ(25px);
-            background: #ffffff;
-            color: #555;
-            padding: 9px 36px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 700;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-            cursor: pointer;
-            z-index: 8;
-            border: 1px solid #ffffff;
-            transition: all 0.3s ease;
+            background: #851822; color: #ffffff;
+            padding: 10px 35px; border-radius: 25px;
+            font-size: 14px; font-weight: 700;
+            box-shadow: 0 5px 15px rgba(133,24,34,0.4);
+            cursor: pointer; border: none;
+            transition: background 0.3s ease;
         }
 
-        .open-btn:hover {
-            background: #fdfdfd;
-            transform: translateX(-50%) translateZ(35px) scale(1.05);
-        }
+        .open-btn:hover { background: #601017; }
 
-        /* INSIDE CARD CONTENT */
         .card-content {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(18, 10, 20, 0.97);
+            background: rgba(18, 10, 20, 0.98);
             backdrop-filter: blur(20px);
-            padding: 40px 20px 30px;
-            text-align: center;
-            z-index: 2;
-            opacity: 0;
-            transform: scale(0.92) translateZ(0);
-            transition: all 0.8s ease 0.5s;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 30px 20px; text-align: center;
+            z-index: 2; opacity: 0; transform: scale(0.92);
+            transition: all 0.8s ease 0.4s; overflow-y: auto;
+            display: flex; flex-direction: column; align-items: center;
         }
 
-        /* OPEN STATE ANIMATIONS */
-        .open .flap-top {
-            transform: rotateX(180deg);
-            z-index: 1;
-        }
-
-        .open .wax-seal, .open .open-btn {
-            opacity: 0;
-            pointer-events: none;
+        .open .envelope-cover {
+            opacity: 0; pointer-events: none; transform: scale(1.1);
         }
 
         .open .card-content {
-            opacity: 1;
-            transform: scale(1) translateZ(10px);
-            z-index: 20;
+            opacity: 1; transform: scale(1); z-index: 20;
         }
 
-        .open .flap-bottom, .open .flap-left, .open .flap-right, .open .lace-overlay {
-            opacity: 0;
-            transition: opacity 0.5s ease 0.6s;
-        }
-
-        /* CARD DETAILS */
-        .top-subtitle { color: #d4a373; font-size: 12px; font-weight: 600; letter-spacing: 3px; }
-        .names { font-family: 'Great Vibes', cursive; font-size: 42px; color: #f3e5ab; margin: 10px 0; text-shadow: 0 0 12px rgba(243, 229, 171, 0.3); direction: ltr; }
+        .top-subtitle { color: #d4a373; font-size: 12px; font-weight: 600; letter-spacing: 3px; margin-bottom: 5px; }
+        .names { font-family: 'Great Vibes', cursive; font-size: 40px; color: #f3e5ab; margin: 5px 0 10px 0; direction: ltr; }
+        .verse { font-size: 11px; color: #e0d0c0; line-height: 1.8; margin: 8px 0; padding: 10px; background: rgba(255, 255, 255, 0.03); border-radius: 12px; border: 1px solid rgba(212, 163, 115, 0.2); width: 100%; }
+        .invitation-text { font-size: 12px; color: #e0e0e0; line-height: 1.6; margin: 8px 0; }
         
-        .verse { 
-            font-size: 12px; color: #e0d0c0; line-height: 2; margin: 15px 0; padding: 12px; 
-            background: rgba(255, 255, 255, 0.03); border-radius: 14px; border: 1px solid rgba(212, 163, 115, 0.2); 
-            font-weight: 300; width: 100%;
-        }
+        .date-badge { color: #d4a373; margin: 10px 0; font-size: 14px; font-weight: 700; background: rgba(212,163,115,0.1); padding: 6px 15px; border-radius: 20px; border: 1px solid rgba(212,163,115,0.3); }
         
-        .invitation-text { font-size: 13px; color: #e0e0e0; line-height: 1.8; margin: 12px 0; }
-        
-        /* CALENDAR */
-        .calendar-title { color: #d4a373; margin-top: 15px; font-size: 15px; font-weight: 700; }
-        .calendar { 
-            display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin: 12px 0; 
-            background: rgba(0, 0, 0, 0.4); padding: 12px 8px; border-radius: 14px; font-size: 12px; 
-            border: 1px solid rgba(212, 163, 115, 0.2); width: 100%;
-        }
-        .calendar div { padding: 6px 0; border-radius: 6px; }
-        .calendar .day-header { font-weight: 700; color: #d4a373; }
-        .calendar .active-day { 
-            background: linear-gradient(135deg, #801823, #b81d24); color: white; font-weight: 700; 
-            box-shadow: 0 0 10px rgba(184, 29, 36, 0.7);
-        }
-
-        /* SCHEDULE */
-        .schedule { margin-top: 15px; text-align: right; border-top: 1px dashed rgba(212, 163, 115, 0.3); padding-top: 15px; width: 100%; }
-        .schedule h3 { text-align: center; color: #d4a373; margin-bottom: 12px; font-size: 15px; font-weight: 700; }
-        
-        .schedule-item { 
-            display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; 
-            font-size: 12px; color: #f1f1f1; background: rgba(255, 255, 255, 0.04); padding: 10px 14px; 
-            border-radius: 10px; border-right: 3px solid #d4a373; 
-        }
-        .schedule-item span:last-child { color: #d4a373; font-weight: 600; direction: ltr; }
-
-        .location-box { 
-            margin-top: 15px; padding: 12px; background: rgba(212, 163, 115, 0.1); 
-            border: 1px solid rgba(212, 163, 115, 0.3); border-radius: 12px; font-size: 13px; 
-            color: #d4a373; font-weight: 700; width: 100%; margin-bottom: 15px;
-        }
+        .location-box { margin-top: 15px; padding: 12px; background: rgba(212, 163, 115, 0.1); border: 1px solid rgba(212, 163, 115, 0.3); border-radius: 12px; font-size: 13px; color: #d4a373; font-weight: 700; width: 100%; }
     </style>
 </head>
 <body>
-
-<div class="petals-container" id="petals"></div>
 
 <div class="main-wrapper" id="wrapper">
     <div class="envelope-container" id="envelopeContainer">
         <div class="envelope">
             
-            <div class="flap-top"></div>
-            <div class="flap-left"></div>
-            <div class="flap-right"></div>
-            <div class="flap-bottom"></div>
+            <div class="envelope-cover" onclick="openEnvelope()">
+                <div class="cover-border"></div>
+                <div style="font-family: 'Great Vibes', cursive; font-size: 22px; color: #851822; margin-bottom: 15px;">بانگێشتنامەی هاوسەرگیری</div>
+                
+                <div class="wax-seal">
+                    <span class="wax-seal-text">R & S</span>
+                </div>
 
-            <!-- EMBOSSED LACE VECTOR PATTERN (3D EMBOSS EFFECT ON ALL 4 FLAPS) -->
-            <svg class="lace-overlay" viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- TOP FLAP FLORAL EMBROIDERY -->
-                <g fill="#ffffff">
-                    <path d="M 50 40 C 120 120, 180 180, 200 240 C 220 180, 280 120, 350 40" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
-                    <circle cx="200" cy="240" r="9"/>
-                    <circle cx="170" cy="200" r="7"/><circle cx="230" cy="200" r="7"/>
-                    <circle cx="140" cy="150" r="6"/><circle cx="260" cy="150" r="6"/>
-                    <circle cx="100" cy="90" r="5"/><circle cx="300" cy="90" r="5"/>
-                </g>
-                <!-- LEFT & RIGHT SIDE EMBOSSED FLORAL BRANCHES -->
-                <g fill="#ffffff">
-                    <path d="M 25 60 Q 140 220 35 400" stroke="#ffffff" stroke-width="4" fill="none"/>
-                    <path d="M 375 60 Q 260 220 365 400" stroke="#ffffff" stroke-width="4" fill="none"/>
-                    <circle cx="70" cy="150" r="8"/><circle cx="330" cy="150" r="8"/>
-                    <circle cx="105" cy="230" r="9"/><circle cx="295" cy="230" r="9"/>
-                    <circle cx="80" cy="320" r="8"/><circle cx="320" cy="320" r="8"/>
-                </g>
-                <!-- BOTTOM EMBOSSED FLORAL BRANCHES -->
-                <g fill="#ffffff">
-                    <path d="M 35 430 Q 140 620 200 760" stroke="#ffffff" stroke-width="4" fill="none"/>
-                    <path d="M 365 430 Q 260 620 200 760" stroke="#ffffff" stroke-width="4" fill="none"/>
-                    <circle cx="90" cy="530" r="8"/><circle cx="310" cy="530" r="8"/>
-                    <circle cx="130" cy="620" r="9"/><circle cx="270" cy="620" r="9"/>
-                    <circle cx="170" cy="700" r="8"/><circle cx="230" cy="700" r="8"/>
-                </g>
-            </svg>
-
-            <!-- WAX SEAL WITH "R & S" -->
-            <div class="wax-seal" onclick="openEnvelope()">
-                <span class="wax-seal-text">R & S</span>
+                <button class="open-btn">بیکەوە</button>
             </div>
 
-            <!-- "بیکەوە" BUTTON -->
-            <div class="open-btn" onclick="openEnvelope()">بیکەوە</div>
-
-            <!-- INSIDE CARD CONTENT -->
             <div class="card-content">
                 <p class="top-subtitle">WEDDING INVITATION</p>
                 <div class="names">Raman & Sara</div>
@@ -324,23 +142,7 @@
                     بەخۆشحاڵییەوە بانگێشتتان دەکەین بۆ ئاهەنگی هاوسەرگیریمان، ئامادەبوونتان ڕازێنەرەوەی ئاهەنگەکەمان دەبێت.
                 </p>
 
-                <div class="calendar-title">مانگی ٨ی ٢٠٢٦</div>
-                <div class="calendar">
-                    <div class="day-header">ش</div><div class="day-header">ی</div><div class="day-header">د</div><div class="day-header">چ</div><div class="day-header">پ</div><div class="day-header">ج</div><div class="day-header">ش</div>
-                    <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
-                    <div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div>
-                    <div class="active-day">15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div>
-                    <div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div><div>28</div>
-                    <div>29</div><div>30</div><div>31</div>
-                </div>
-
-                <div class="schedule">
-                    <h3>خشتەی بەرنامەکان</h3>
-                    <div class="schedule-item"><span>کۆبوونەوەی میوانان</span> <span>04:00 PM</span></div>
-                    <div class="schedule-item"><span>هاتنی بووک و زاوا</span> <span>05:00 PM</span></div>
-                    <div class="schedule-item"><span>پێشکەشکردنی شیرینی</span> <span>06:00 PM</span></div>
-                    <div class="schedule-item"><span>کۆتایی ئاهەنگ</span> <span>08:00 PM</span></div>
-                </div>
+                <div class="date-badge">📅 ڕێکەوت: 22 / 3</div>
 
                 <div class="location-box">
                     📍 شوێن: هۆڵی ئاهەنگەکان
@@ -355,7 +157,6 @@
         document.getElementById('envelopeContainer').classList.add('open');
     }
 
-    // 3D TILT EFFECT ON MOUSE / TOUCH MOVE
     const container = document.getElementById('envelopeContainer');
     const wrapper = document.getElementById('wrapper');
 
@@ -368,19 +169,6 @@
     wrapper.addEventListener('mouseleave', () => {
         container.style.transform = `rotateY(0deg) rotateX(0deg)`;
     });
-
-    // PETALS ANIMATION
-    const petalsContainer = document.getElementById('petals');
-    for (let i = 0; i < 25; i++) {
-        const petal = document.createElement('div');
-        petal.classList.add('petal');
-        petal.style.left = Math.random() * 100 + 'vw';
-        petal.style.animationDuration = Math.random() * 4 + 6 + 's';
-        petal.style.animationDelay = Math.random() * 4 + 's';
-        petal.style.width = Math.random() * 10 + 8 + 'px';
-        petal.style.height = Math.random() * 10 + 8 + 'px';
-        petalsContainer.appendChild(petal);
-    }
 </script>
 
 </body>
