@@ -6,93 +6,76 @@
     <title>بانگێشتنامەی هاوسەرگیری - رامان و سارا</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Vazirmatn:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         
         html, body {
             width: 100%; height: 100%; overflow: hidden;
-            font-family: 'Vazirmatn', sans-serif; background: #0d060e;
+            font-family: 'Vazirmatn', sans-serif; background: #0c080d;
         }
 
         .main-wrapper {
             width: 100vw; height: 100vh;
             display: flex; justify-content: center; align-items: center;
-            background: radial-gradient(circle, #230d1d 0%, #050205 100%);
-            perspective: 1000px;
+            background: radial-gradient(circle, #1f0b18 0%, #050205 100%);
         }
 
         .envelope-container {
-            width: 100%; height: 100%; max-width: 440px; max-height: 850px;
-            position: relative; transform-style: preserve-3d; transition: transform 0.1s ease-out;
+            width: 100%; height: 100%; max-width: 420px; max-height: 840px;
+            position: relative; border-radius: 16px; overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+            border: 1px solid rgba(212, 163, 115, 0.3);
         }
 
-        .envelope {
-            width: 100%; height: 100%; position: relative;
-            background: #fdfbf7; overflow: hidden; border-radius: 12px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
-            transform-style: preserve-3d;
-            border: 2px solid #e6d8cb;
-        }
-
+        /* بەرگی سەرەکی (پێش کردنەوە) */
         .envelope-cover {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, #fbf7f0 0%, #f0e4d8 100%);
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #fbf7f2 0%, #eddcc8 100%);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 5;
-            transition: all 0.8s ease;
+            z-index: 10; transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+            padding: 20px; text-align: center;
         }
 
         .cover-border {
-            position: absolute;
-            top: 15px; left: 15px; right: 15px; bottom: 15px;
-            border: 1px dashed #d4a373;
-            border-radius: 8px;
-            pointer-events: none;
+            position: absolute; top: 15px; left: 15px; right: 15px; bottom: 15px;
+            border: 1px solid #d4a373; border-radius: 10px; pointer-events: none;
+        }
+
+        .cover-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 26px; color: #7a161f; margin-bottom: 25px;
         }
 
         .wax-seal {
-            width: 90px; height: 90px;
+            width: 85px; height: 85px;
             background: radial-gradient(circle, #851822 0%, #4a060d 100%);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            border: 3px solid #d4a373;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            cursor: pointer;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            border: 3px solid #d4a373; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            cursor: pointer; margin-bottom: 25px; transition: transform 0.3s;
         }
 
         .wax-seal:hover { transform: scale(1.05); }
 
         .wax-seal-text {
             font-family: 'Great Vibes', cursive;
-            font-size: 32px; color: #fce7c8;
-            letter-spacing: 2px; direction: ltr;
+            font-size: 30px; color: #fce7c8; letter-spacing: 2px; direction: ltr;
         }
 
         .open-btn {
-            background: #851822; color: #ffffff;
-            padding: 10px 35px; border-radius: 25px;
-            font-size: 14px; font-weight: 700;
-            box-shadow: 0 5px 15px rgba(133,24,34,0.4);
-            cursor: pointer; border: none;
-            transition: background 0.3s ease;
+            background: #851822; color: #fff; border: none;
+            padding: 12px 35px; border-radius: 30px; font-size: 14px;
+            font-weight: 600; cursor: pointer; box-shadow: 0 5px 15px rgba(133,24,34,0.4);
         }
 
-        .open-btn:hover { background: #601017; }
-
+        /* ناوەڕۆکی نامەکە (دوای کردنەوە) */
         .card-content {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(18, 10, 20, 0.98);
-            backdrop-filter: blur(20px);
-            padding: 30px 20px; text-align: center;
-            z-index: 2; opacity: 0; transform: scale(0.92);
-            transition: all 0.8s ease 0.4s; overflow-y: auto;
-            display: flex; flex-direction: column; align-items: center;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, #140912 0%, #080308 100%);
+            color: #f5eddf; padding: 25px 20px; overflow-y: auto;
+            opacity: 0; transform: scale(0.95); transition: all 0.8s ease 0.3s;
+            z-index: 5; display: flex; flex-direction: column; align-items: center; text-align: center;
         }
 
         .open .envelope-cover {
@@ -100,75 +83,127 @@
         }
 
         .open .card-content {
-            opacity: 1; transform: scale(1); z-index: 20;
+            opacity: 1; transform: scale(1); z-index: 15;
         }
 
-        .top-subtitle { color: #d4a373; font-size: 12px; font-weight: 600; letter-spacing: 3px; margin-bottom: 5px; }
-        .names { font-family: 'Great Vibes', cursive; font-size: 40px; color: #f3e5ab; margin: 5px 0 10px 0; direction: ltr; }
-        .verse { font-size: 11px; color: #e0d0c0; line-height: 1.8; margin: 8px 0; padding: 10px; background: rgba(255, 255, 255, 0.03); border-radius: 12px; border: 1px solid rgba(212, 163, 115, 0.2); width: 100%; }
-        .invitation-text { font-size: 12px; color: #e0e0e0; line-height: 1.6; margin: 8px 0; }
+        .sub-heading { font-size: 11px; color: #d4a373; letter-spacing: 2px; margin-bottom: 4px; }
+        .main-names { font-family: 'Great Vibes', cursive; font-size: 42px; color: #f3e5ab; margin: 5px 0 15px 0; direction: ltr; }
         
-        .date-badge { color: #d4a373; margin: 10px 0; font-size: 14px; font-weight: 700; background: rgba(212,163,115,0.1); padding: 6px 15px; border-radius: 20px; border: 1px solid rgba(212,163,115,0.3); }
-        
-        .location-box { margin-top: 15px; padding: 12px; background: rgba(212, 163, 115, 0.1); border: 1px solid rgba(212, 163, 115, 0.3); border-radius: 12px; font-size: 13px; color: #d4a373; font-weight: 700; width: 100%; }
+        .verse-box {
+            font-size: 11px; color: #dfd0c0; line-height: 1.8;
+            padding: 10px; background: rgba(255,255,255,0.03);
+            border-radius: 10px; border: 1px solid rgba(212,163,115,0.2); width: 100%; margin-bottom: 12px;
+        }
+
+        .inv-text { font-size: 12px; color: #ccc; line-height: 1.6; margin-bottom: 15px; }
+
+        /* کاتژمێری ژماردنی پێچەوانە */
+        .countdown-title { font-size: 13px; color: #d4a373; font-weight: 600; margin-bottom: 8px; }
+        .countdown-grid {
+            display: flex; gap: 8px; width: 100%; justify-content: center; margin-bottom: 15px; direction: ltr;
+        }
+        .count-box {
+            background: rgba(212,163,115,0.1); border: 1px solid rgba(212,163,115,0.3);
+            padding: 6px 10px; border-radius: 8px; min-width: 55px; text-align: center;
+        }
+        .count-num { font-size: 14px; font-weight: 700; color: #f3e5ab; }
+        .count-lbl { font-size: 9px; color: #aaa; }
+
+        /* بەشەکانی ئاهەنگ */
+        .section-title { font-size: 13px; color: #d4a373; font-weight: 700; margin: 15px 0 8px 0; }
+        .program-box {
+            width: 100%; background: rgba(255,255,255,0.02); border: 1px solid rgba(212,163,115,0.2);
+            border-radius: 10px; padding: 10px; margin-bottom: 15px; text-align: right;
+        }
+        .prog-item { display: flex; justify-content: space-between; font-size: 11px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .prog-item:last-child { border-bottom: none; }
+        .prog-item span:first-child { color: #f3e5ab; }
+
+        /* شوێن */
+        .location-card {
+            width: 100%; background: rgba(212,163,115,0.1); border: 1px solid rgba(212,163,115,0.3);
+            border-radius: 10px; padding: 12px; font-size: 12px; color: #d4a373; font-weight: 600; margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
 
-<div class="main-wrapper" id="wrapper">
-    <div class="envelope-container" id="envelopeContainer">
-        <div class="envelope">
+<div class="main-wrapper">
+    <div class="envelope-container" id="envContainer">
+        
+        <!-- بەرگی نامە -->
+        <div class="envelope-cover" onclick="openEnv()">
+            <div class="cover-border"></div>
+            <div class="cover-title">بانگێشتنامەی هاوسەرگیری</div>
             
-            <div class="envelope-cover" onclick="openEnvelope()">
-                <div class="cover-border"></div>
-                <div style="font-family: 'Great Vibes', cursive; font-size: 22px; color: #851822; margin-bottom: 15px;">بانگێشتنامەی هاوسەرگیری</div>
-                
-                <div class="wax-seal">
-                    <span class="wax-seal-text">R & S</span>
-                </div>
-
-                <button class="open-btn">بیکەوە</button>
+            <div class="wax-seal">
+                <span class="wax-seal-text">R & S</span>
             </div>
 
-            <div class="card-content">
-                <p class="top-subtitle">WEDDING INVITATION</p>
-                <div class="names">Raman & Sara</div>
-                
-                <div class="verse">
-                    «وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً»
-                </div>
+            <button class="open-btn">بیکەوە</button>
+        </div>
 
-                <p class="invitation-text">
-                    بەخۆشحاڵییەوە بانگێشتتان دەکەین بۆ ئاهەنگی هاوسەرگیریمان، ئامادەبوونتان ڕازێنەرەوەی ئاهەنگەکەمان دەبێت.
-                </p>
+        <!-- ناوەڕۆکی نامە -->
+        <div class="card-content">
+            <div class="sub-heading">WEDDING INVITATION</div>
+            <div class="main-names">Raman & Sara</div>
+            
+            <div class="verse-box">
+                «وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً»
+            </div>
 
-                <div class="date-badge">📅 ڕێکەوت: 22 / 3</div>
+            <div class="inv-text">
+                بەخۆشحاڵییەوە بانگێشتتان دەکەین بۆ ئاهەنگی هاوسەرگیریمان، ئامادەبوونتان ڕازێنەرەوەی ڕۆژە تایبەتەکەمان دەبێت.
+            </div>
 
-                <div class="location-box">
-                    📍 شوێن: هۆڵی ئاهەنگەکان
-                </div>
+            <div class="countdown-title">ماوە بۆ دەستپێکردنی ئاهەنگ:</div>
+            <div class="countdown-grid" id="countdown">
+                <div class="count-box"><div class="count-num" id="days">00</div><div class="count-lbl">ڕۆژ</div></div>
+                <div class="count-box"><div class="count-num" id="hours">00</div><div class="count-lbl">کاتژمێر</div></div>
+                <div class="count-box"><div class="count-num" id="mins">00</div><div class="count-lbl">خولەک</div></div>
+                <div class="count-box"><div class="count-num" id="secs">00</div><div class="count-lbl">چرکە</div></div>
+            </div>
+
+            <div class="section-title">✨ بەرنامەی ئاهەنگ</div>
+            <div class="program-box">
+                <div class="prog-item"><span>هاتنی بووک و زاوا</span> <span>٠٥:٠٠ ئێوارە</span></div>
+                <div class="prog-item"><span>مەراسیمی مابه‌عید</span> <span>٠٧:٠٠ ئێوارە</span></div>
+                <div class="prog-item"><span>خۆشی و سەما</span> <span>٠٨:٠٠ ئێوارە</span></div>
+            </div>
+
+            <div class="location-card">
+                📍 شوێن: هۆڵی ئاهەنگەکان
             </div>
         </div>
+
     </div>
 </div>
 
 <script>
-    function openEnvelope() {
-        document.getElementById('envelopeContainer').classList.add('open');
+    function openEnv() {
+        document.getElementById('envContainer').classList.add('open');
     }
 
-    const container = document.getElementById('envelopeContainer');
-    const wrapper = document.getElementById('wrapper');
+    // کاتژمێری ژماردنی پێچەوانە بۆ 22ی مانگی 3
+    const eventDate = new Date('2027-03-22T17:00:00').getTime();
 
-    wrapper.addEventListener('mousemove', (e) => {
-        const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-        const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-        container.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-    });
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const gap = eventDate - now;
 
-    wrapper.addEventListener('mouseleave', () => {
-        container.style.transform = `rotateY(0deg) rotateX(0deg)`;
-    });
+        if (gap > 0) {
+            const d = Math.floor(gap / (1000 * 60 * 60 * 24));
+            const h = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((gap % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = String(d).padStart(2, '0');
+            document.getElementById('hours').innerText = String(h).padStart(2, '0');
+            document.getElementById('mins').innerText = String(m).padStart(2, '0');
+            document.getElementById('secs').innerText = String(s).padStart(2, '0');
+        }
+    }
+    setInterval(updateCountdown, 1000);
 </script>
 
 </body>
