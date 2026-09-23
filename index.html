@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بانگێشتنامەی هاوسەرگیری - ڕامان & سارا</title>
-    <!-- PHONTI KORDI NAAYAB -->
+    <!-- PHONTI KORDI -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             font-family: 'Vazirmatn', sans-serif; 
-            background: linear-gradient(135deg, #120b18, #2a1226, #120b18);
+            background: linear-gradient(135deg, #1a0913, #2d1124, #1a0913);
             min-height: 100vh; 
             display: flex; 
             justify-content: center; 
@@ -45,215 +45,307 @@
         }
 
         @keyframes animate-petal {
-            0% {
-                opacity: 0;
-                top: -10%;
-                transform: translateX(0) rotate(0deg);
-            }
+            0% { opacity: 0; top: -10%; transform: translateX(0) rotate(0deg); }
             10% { opacity: 0.7; }
-            100% {
-                opacity: 0;
-                top: 100%;
-                transform: translateX(100px) rotate(360deg);
-            }
+            100% { opacity: 0; top: 100%; transform: translateX(100px) rotate(360deg); }
         }
 
-        .container { width: 100%; max-width: 390px; position: relative; z-index: 10; }
-        
-        /* BERGI NAMAKA */
-        .envelope { 
-            background: rgba(30, 20, 32, 0.85); 
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(228, 178, 122, 0.4); 
-            border-radius: 24px; 
-            padding: 50px 20px; 
-            text-align: center; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
-            cursor: pointer; 
-            transition: all 0.3s ease; 
+        .container { 
+            width: 100%; 
+            max-width: 380px; 
+            position: relative; 
+            z-index: 10; 
+            perspective: 1000px;
         }
-        .envelope:hover { transform: translateY(-3px); border-color: #e4b27a; }
-        
-        .wax-seal { 
-            width: 85px; 
-            height: 85px; 
-            background: radial-gradient(circle, #8b1e2b, #4a0e15); 
-            color: #e4b27a; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 24px; 
-            font-weight: 700; 
-            margin: 0 auto 20px; 
-            border: 2px solid #e4b27a; 
-            box-shadow: 0 0 20px rgba(228, 178, 122, 0.3); 
+
+        /* ENVELOPE DESIGN WITH FLAP ANIMATION */
+        .envelope-wrapper {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            background: #f7ebe8;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            overflow: hidden;
+            transition: all 0.5s ease;
         }
-        
-        .btn-open { 
-            background: linear-gradient(135deg, #e4b27a, #b88248); 
-            color: #120b18; 
-            border: none; 
-            padding: 12px 30px; 
-            border-radius: 25px; 
-            font-size: 15px; 
+
+        .envelope-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #e8d0ca;
+            z-index: 1;
+        }
+
+        /* TOP FLAP (SERI NAMAKA) */
+        .flap-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 190px solid transparent;
+            border-right: 190px solid transparent;
+            border-top: 220px solid #d9b8b0;
+            transform-origin: top;
+            transition: transform 0.8s ease 0.2s, z-index 0.2s ease 0.8s;
+            z-index: 5;
+        }
+
+        /* BOTTOM & SIDE FLAPS */
+        .flap-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 190px solid transparent;
+            border-right: 190px solid transparent;
+            border-bottom: 260px solid #ecd8d3;
+            z-index: 4;
+        }
+
+        .flap-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-top: 240px solid transparent;
+            border-bottom: 240px solid transparent;
+            border-left: 200px solid #e2c9c2;
+            z-index: 3;
+        }
+
+        .flap-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-top: 240px solid transparent;
+            border-bottom: 240px solid transparent;
+            border-right: 200px solid #e2c9c2;
+            z-index: 3;
+        }
+
+        /* WAX SEAL (MORI ALTUNI) */
+        .wax-seal {
+            position: absolute;
+            top: 200px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #8b1e2b, #4a0e15);
+            color: #e4b27a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
             font-weight: 700;
-            cursor: pointer; 
-            margin-top: 15px; 
-            font-family: 'Vazirmatn', sans-serif; 
-            box-shadow: 0 4px 15px rgba(228, 178, 122, 0.3); 
-            transition: 0.3s;
+            border: 2px solid #e4b27a;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            cursor: pointer;
+            z-index: 6;
+            transition: transform 0.4s ease, opacity 0.4s ease;
         }
 
-        /* NAWAKHI KARTAKA */
-        .card-content { 
-            display: none; 
-            background: rgba(23, 16, 26, 0.92); 
-            backdrop-filter: blur(15px);
-            border-radius: 24px; 
-            padding: 30px 20px; 
-            text-align: center; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6); 
-            border: 1px solid rgba(228, 178, 122, 0.25); 
-            animation: fadeIn 0.8s ease-in-out; 
+        .wax-seal:hover {
+            transform: translate(-50%, -50%) scale(1.08);
         }
-        
-        .top-subtitle { color: #e4b27a; font-size: 13px; font-weight: 600; letter-spacing: 2px; }
-        .names { font-size: 32px; color: #ffb4a2; font-weight: 800; margin: 15px 0; text-shadow: 0 0 10px rgba(255, 180, 162, 0.2); }
+
+        .seal-text {
+            position: absolute;
+            top: 260px;
+            width: 100%;
+            text-align: center;
+            color: #7a434b;
+            font-size: 14px;
+            font-weight: 700;
+            z-index: 6;
+            transition: opacity 0.4s ease;
+        }
+
+        /* CARD CONTENT INSIDE ENVELOPE */
+        .card-content {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            right: 10px;
+            background: rgba(23, 16, 26, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 25px 18px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border: 1px solid rgba(228, 178, 122, 0.3);
+            z-index: 2;
+            transition: transform 0.8s ease 0.6s;
+            max-height: 440px;
+            overflow-y: auto;
+        }
+
+        /* OPEN ANIMATION CLASSES */
+        .open .flap-top {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .open .wax-seal, .open .seal-text {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .open .card-content {
+            transform: translateY(-10px) scale(1.02);
+            z-index: 10;
+        }
+
+        .open .envelope-wrapper {
+            height: auto;
+            min-height: 620px;
+            background: transparent;
+            box-shadow: none;
+            overflow: visible;
+        }
+
+        .open .flap-bottom, .open .flap-left, .open .flap-right, .open .envelope-back {
+            opacity: 0;
+            transition: opacity 0.5s ease 0.8s;
+        }
+
+        /* CARD DETAILS */
+        .top-subtitle { color: #e4b27a; font-size: 12px; font-weight: 600; letter-spacing: 2px; }
+        .names { font-size: 28px; color: #ffb4a2; font-weight: 800; margin: 12px 0; text-shadow: 0 0 10px rgba(255, 180, 162, 0.2); }
         
         .verse { 
-            font-size: 13px; 
+            font-size: 12px; 
             color: #d1d1d1; 
-            line-height: 1.9; 
-            margin: 18px 0; 
-            padding: 14px; 
+            line-height: 1.8; 
+            margin: 12px 0; 
+            padding: 10px; 
             background: rgba(255, 255, 255, 0.03); 
-            border-radius: 14px; 
+            border-radius: 12px; 
             border: 1px solid rgba(228, 178, 122, 0.15); 
             font-weight: 300;
         }
         
-        .invitation-text { font-size: 14px; color: #e0e0e0; line-height: 1.8; margin: 15px 0; font-weight: 400; }
+        .invitation-text { font-size: 13px; color: #e0e0e0; line-height: 1.7; margin: 12px 0; }
         
-        /* ROZHZHMR */
-        .calendar-title { color: #e4b27a; margin-top: 25px; font-size: 16px; font-weight: 700; }
+        /* CALENDAR */
+        .calendar-title { color: #e4b27a; margin-top: 18px; font-size: 15px; font-weight: 700; }
         .calendar { 
             display: grid; 
             grid-template-columns: repeat(7, 1fr); 
-            gap: 6px; 
-            margin: 15px 0; 
-            background: rgba(0, 0, 0, 0.25); 
-            padding: 14px 10px; 
-            border-radius: 16px; 
-            font-size: 13px; 
-            border: 1px solid rgba(258, 178, 122, 0.15); 
+            gap: 4px; 
+            margin: 12px 0; 
+            background: rgba(0, 0, 0, 0.3); 
+            padding: 10px 6px; 
+            border-radius: 14px; 
+            font-size: 12px; 
+            border: 1px solid rgba(228, 178, 122, 0.15); 
         }
-        .calendar div { padding: 8px 0; border-radius: 10px; font-weight: 400; }
+        .calendar div { padding: 6px 0; border-radius: 8px; }
         .calendar .day-header { font-weight: 700; color: #e4b27a; }
         .calendar .active-day { 
             background: linear-gradient(135deg, #b81d24, #ef4753); 
             color: white; 
             font-weight: 700; 
-            box-shadow: 0 0 12px rgba(239, 71, 83, 0.6);
+            box-shadow: 0 0 10px rgba(239, 71, 83, 0.6);
         }
 
-        /* KHSHI BARNAMAKAN */
-        .schedule { margin-top: 25px; text-align: right; border-top: 1px dashed rgba(228, 178, 122, 0.3); padding-top: 20px; }
-        .schedule h3 { text-align: center; color: #e4b27a; margin-bottom: 18px; font-size: 16px; font-weight: 700; }
+        /* SCHEDULE */
+        .schedule { margin-top: 20px; text-align: right; border-top: 1px dashed rgba(228, 178, 122, 0.3); padding-top: 15px; }
+        .schedule h3 { text-align: center; color: #e4b27a; margin-bottom: 14px; font-size: 15px; font-weight: 700; }
         
         .schedule-item { 
             display: flex; 
             justify-content: space-between; 
             align-items: center;
-            margin-bottom: 12px; 
-            font-size: 13px; 
+            margin-bottom: 10px; 
+            font-size: 12px; 
             color: #f1f1f1; 
             background: rgba(255, 255, 255, 0.04); 
-            padding: 12px 16px; 
-            border-radius: 12px; 
-            border-right: 4px solid #e4b27a; 
-            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            padding: 10px 14px; 
+            border-radius: 10px; 
+            border-right: 3px solid #e4b27a; 
         }
-        .schedule-item span:last-child {
-            color: #e4b27a;
-            font-weight: 600;
-            direction: ltr;
-        }
+        .schedule-item span:last-child { color: #e4b27a; font-weight: 600; direction: ltr; }
 
         .location-box { 
-            margin-top: 22px; 
-            padding: 14px; 
+            margin-top: 18px; 
+            padding: 12px; 
             background: rgba(228, 178, 122, 0.08); 
             border: 1px solid rgba(228, 178, 122, 0.3);
-            border-radius: 14px; 
-            font-size: 14px; 
+            border-radius: 12px; 
+            font-size: 13px; 
             color: #e4b27a; 
             font-weight: 700; 
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-<!-- ANIMATIONY GULAKAN -->
 <div class="petals-container" id="petals"></div>
 
-<div class="container">
-    <!-- BERGI NAMAKA -->
-    <div class="envelope" id="envelope" onclick="openCard()">
-        <div class="wax-seal">R & S</div>
-        <p style="color: #e4b27a; font-size: 16px; margin-bottom: 10px; font-weight: 700;">🌸 بانگێشتنامەی هاوسەرگیری 🌸</p>
-        <button class="btn-open">کلیک بکە بۆ بەشداریبوون</button>
-    </div>
-
-    <!-- NAWAKHI KARTAKA -->
-    <div class="card-content" id="cardContent">
-        <p class="top-subtitle">WEDDING INVITATION</p>
-        <div class="names">ڕامان & سارا</div>
+<div class="container" id="mainContainer">
+    <div class="envelope-wrapper">
+        <div class="envelope-back"></div>
+        <div class="flap-top"></div>
+        <div class="flap-left"></div>
+        <div class="flap-right"></div>
+        <div class="flap-bottom"></div>
         
-        <div class="verse">
-            «وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً»
-        </div>
+        <div class="wax-seal" onclick="openEnvelope()">R & S</div>
+        <div class="seal-text">داگرە بۆ کردنەوەی نامەکە 🌸</div>
 
-        <p class="invitation-text">
-            بەخۆشحاڵییەوە بانگێشتتان دەکەین بۆ ئاهەنگی هاوسەرگیریمان، ئامادەبوونتان ڕازێنەرەوەی ئاهەنگەکەمان دەبێت.
-        </p>
+        <!-- INSIDE CARD -->
+        <div class="card-content">
+            <p class="top-subtitle">WEDDING INVITATION</p>
+            <div class="names">ڕامان & سارا</div>
+            
+            <div class="verse">
+                «وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً»
+            </div>
 
-        <div class="calendar-title">مانگی ٨ی ٢٠٢٦</div>
-        <div class="calendar">
-            <div class="day-header">ش</div><div class="day-header">ی</div><div class="day-header">د</div><div class="day-header">چ</div><div class="day-header">پ</div><div class="day-header">ج</div><div class="day-header">ش</div>
-            <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
-            <div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div>
-            <div class="active-day">15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div>
-            <div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div><div>28</div>
-            <div>29</div><div>30</div><div>31</div>
-        </div>
+            <p class="invitation-text">
+                بەخۆشحاڵییەوە بانگێشتتان دەکەین بۆ ئاهەنگی هاوسەرگیریمان، ئامادەبوونتان ڕازێنەرەوەی ئاهەنگەکەمان دەبێت.
+            </p>
 
-        <div class="schedule">
-            <h3>خشتەی بەرنامەکان</h3>
-            <div class="schedule-item"><span>کۆبوونەوەی میوانان</span> <span>04:00 PM</span></div>
-            <div class="schedule-item"><span>هاتنی بووک و زاوا</span> <span>05:00 PM</span></div>
-            <div class="schedule-item"><span>پێشکەشکردنی شیرینی</span> <span>06:00 PM</span></div>
-            <div class="schedule-item"><span>کۆتایی ئاهەنگ</span> <span>08:00 PM</span></div>
-        </div>
+            <div class="calendar-title">مانگی ٨ی ٢٠٢٦</div>
+            <div class="calendar">
+                <div class="day-header">ش</div><div class="day-header">ی</div><div class="day-header">د</div><div class="day-header">چ</div><div class="day-header">پ</div><div class="day-header">ج</div><div class="day-header">ش</div>
+                <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+                <div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div>
+                <div class="active-day">15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div>
+                <div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div><div>28</div>
+                <div>29</div><div>30</div><div>31</div>
+            </div>
 
-        <div class="location-box">
-            📍 شوێن: هۆڵی ئاهەنگەکان
+            <div class="schedule">
+                <h3>خشتەی بەرنامەکان</h3>
+                <div class="schedule-item"><span>کۆبوونەوەی میوانان</span> <span>04:00 PM</span></div>
+                <div class="schedule-item"><span>هاتنی بووک و زاوا</span> <span>05:00 PM</span></div>
+                <div class="schedule-item"><span>پێشکەشکردنی شیرینی</span> <span>06:00 PM</span></div>
+                <div class="schedule-item"><span>کۆتایی ئاهەنگ</span> <span>08:00 PM</span></div>
+            </div>
+
+            <div class="location-box">
+                📍 شوێن: هۆڵی ئاهەنگەکان
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    function openCard() {
-        document.getElementById('envelope').style.display = 'none';
-        document.getElementById('cardContent').style.display = 'block';
+    function openEnvelope() {
+        document.getElementById('mainContainer').classList.add('open');
     }
 
-    // DRUSTKARDINI GULI HALWARIU
+    // PETALS ANIMATION
     const petalsContainer = document.getElementById('petals');
     for (let i = 0; i < 25; i++) {
         const petal = document.createElement('div');
