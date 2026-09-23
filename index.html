@@ -2,26 +2,22 @@
 <html lang="ckb" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>بانگێشتنامەی هاوسەرگیری - ڕامان & سارا</title>
-    <!-- PHONTI KORDI -->
+    <!-- PHONTI KORDI NAAYAB -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
             font-family: 'Vazirmatn', sans-serif; 
-            background: linear-gradient(135deg, #1a0913, #2d1124, #1a0913);
-            min-height: 100vh; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            overflow-x: hidden; 
-            padding: 15px; 
-            position: relative;
-            color: #f1f1f1;
+            background: #120810;
         }
 
         /* BANGRONDI GULAKAN */
@@ -29,92 +25,92 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             pointer-events: none;
             overflow: hidden;
-            z-index: 1;
+            z-index: 100;
         }
 
         .petal {
             position: absolute;
-            background: #e5989b;
+            background: #f4a261;
             border-radius: 150% 0 150% 0;
             opacity: 0.6;
-            animation: animate-petal 10s linear infinite;
+            animation: animate-petal 9s linear infinite;
         }
 
         @keyframes animate-petal {
             0% { opacity: 0; top: -10%; transform: translateX(0) rotate(0deg); }
             10% { opacity: 0.7; }
-            100% { opacity: 0; top: 100%; transform: translateX(100px) rotate(360deg); }
+            100% { opacity: 0; top: 105%; transform: translateX(80px) rotate(360deg); }
         }
 
-        .container { 
-            width: 100%; 
-            max-width: 380px; 
-            position: relative; 
-            z-index: 10; 
-            perspective: 1000px;
-        }
-
-        /* ENVELOPE DESIGN WITH FLAP ANIMATION */
-        .envelope-wrapper {
+        /* FULLSCREEN CONTAINER */
+        .main-wrapper {
+            width: 100vw;
+            height: 100vh;
             position: relative;
-            width: 100%;
-            height: 480px;
-            background: #f7ebe8;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            overflow: hidden;
-            transition: all 0.5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1c0d18, #2d1226, #1c0d18);
         }
 
-        .envelope-back {
-            position: absolute;
+        /* FULLSCREEN ENVELOPE Wrapper */
+        .envelope-container {
             width: 100%;
             height: 100%;
-            background: #e8d0ca;
-            z-index: 1;
+            max-width: 500px;
+            position: relative;
+            perspective: 1200px;
         }
 
-        /* TOP FLAP (SERI NAMAKA) */
+        .envelope {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: #eddcd2;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            transition: all 0.8s ease;
+        }
+
+        /* ENVELOPE FLAPS */
         .flap-top {
             position: absolute;
             top: 0;
             left: 0;
-            width: 0;
-            height: 0;
-            border-left: 190px solid transparent;
-            border-right: 190px solid transparent;
-            border-top: 220px solid #d9b8b0;
+            width: 100%;
+            height: 50%;
+            background: #d8bbaa;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
             transform-origin: top;
-            transition: transform 0.8s ease 0.2s, z-index 0.2s ease 0.8s;
+            transition: transform 0.8s ease 0.2s, z-index 0.1s ease 0.8s;
             z-index: 5;
+            border-bottom: 2px solid #b8927c;
         }
 
-        /* BOTTOM & SIDE FLAPS */
         .flap-bottom {
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 0;
-            height: 0;
-            border-left: 190px solid transparent;
-            border-right: 190px solid transparent;
-            border-bottom: 260px solid #ecd8d3;
+            width: 100%;
+            height: 55%;
+            background: #e8cebf;
+            clip-path: polygon(0 100%, 100% 100%, 50% 0);
             z-index: 4;
+            border-top: 2px solid #cbb09e;
         }
 
         .flap-left {
             position: absolute;
             top: 0;
             left: 0;
-            width: 0;
-            height: 0;
-            border-top: 240px solid transparent;
-            border-bottom: 240px solid transparent;
-            border-left: 200px solid #e2c9c2;
+            width: 55%;
+            height: 100%;
+            background: #e0c3b2;
+            clip-path: polygon(0 0, 0 100%, 100% 50%);
             z-index: 3;
         }
 
@@ -122,35 +118,34 @@
             position: absolute;
             top: 0;
             right: 0;
-            width: 0;
-            height: 0;
-            border-top: 240px solid transparent;
-            border-bottom: 240px solid transparent;
-            border-right: 200px solid #e2c9c2;
+            width: 55%;
+            height: 100%;
+            background: #e0c3b2;
+            clip-path: polygon(100% 0, 100% 100%, 0 50%);
             z-index: 3;
         }
 
         /* WAX SEAL (MORI ALTUNI) */
         .wax-seal {
             position: absolute;
-            top: 200px;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
+            width: 95px;
+            height: 95px;
             background: radial-gradient(circle, #8b1e2b, #4a0e15);
             color: #e4b27a;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
-            font-weight: 700;
-            border: 2px solid #e4b27a;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            font-size: 26px;
+            font-weight: 800;
+            border: 3px solid #e4b27a;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5), inset 0 0 10px rgba(0,0,0,0.5);
             cursor: pointer;
             z-index: 6;
-            transition: transform 0.4s ease, opacity 0.4s ease;
+            transition: all 0.4s ease;
         }
 
         .wax-seal:hover {
@@ -159,36 +154,47 @@
 
         .seal-text {
             position: absolute;
-            top: 260px;
+            top: calc(50% + 70px);
+            left: 0;
             width: 100%;
             text-align: center;
             color: #7a434b;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 700;
             z-index: 6;
             transition: opacity 0.4s ease;
         }
 
-        /* CARD CONTENT INSIDE ENVELOPE */
+        /* CARD CONTENT INSIDE FULLSCREEN */
         .card-content {
             position: absolute;
-            top: 20px;
-            left: 10px;
-            right: 10px;
-            background: rgba(23, 16, 26, 0.95);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(20, 13, 22, 0.96);
             backdrop-filter: blur(15px);
-            border-radius: 20px;
-            padding: 25px 18px;
+            padding: 40px 20px 30px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            border: 1px solid rgba(228, 178, 122, 0.3);
             z-index: 2;
-            transition: transform 0.8s ease 0.6s;
-            max-height: 440px;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s ease 0.5s;
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* OPEN ANIMATION CLASSES */
+        /* FLORAL CORNERS FOR CARD */
+        .floral-top {
+            width: 100%;
+            max-width: 250px;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        /* OPEN STATE */
         .open .flap-top {
             transform: rotateX(180deg);
             z-index: 1;
@@ -200,90 +206,87 @@
         }
 
         .open .card-content {
-            transform: translateY(-10px) scale(1.02);
-            z-index: 10;
+            opacity: 1;
+            transform: scale(1);
+            z-index: 20;
         }
 
-        .open .envelope-wrapper {
-            height: auto;
-            min-height: 620px;
-            background: transparent;
-            box-shadow: none;
-            overflow: visible;
-        }
-
-        .open .flap-bottom, .open .flap-left, .open .flap-right, .open .envelope-back {
+        .open .flap-bottom, .open .flap-left, .open .flap-right {
             opacity: 0;
-            transition: opacity 0.5s ease 0.8s;
+            transition: opacity 0.6s ease 0.6s;
         }
 
-        /* CARD DETAILS */
-        .top-subtitle { color: #e4b27a; font-size: 12px; font-weight: 600; letter-spacing: 2px; }
-        .names { font-size: 28px; color: #ffb4a2; font-weight: 800; margin: 12px 0; text-shadow: 0 0 10px rgba(255, 180, 162, 0.2); }
+        /* TYPOGRAPHY AND DETAILS */
+        .top-subtitle { color: #e4b27a; font-size: 13px; font-weight: 600; letter-spacing: 3px; }
+        .names { font-size: 34px; color: #ffb4a2; font-weight: 800; margin: 15px 0; text-shadow: 0 0 15px rgba(255, 180, 162, 0.3); }
         
         .verse { 
-            font-size: 12px; 
+            font-size: 13px; 
             color: #d1d1d1; 
-            line-height: 1.8; 
-            margin: 12px 0; 
-            padding: 10px; 
+            line-height: 2; 
+            margin: 15px 0; 
+            padding: 14px; 
             background: rgba(255, 255, 255, 0.03); 
-            border-radius: 12px; 
-            border: 1px solid rgba(228, 178, 122, 0.15); 
+            border-radius: 16px; 
+            border: 1px solid rgba(228, 178, 122, 0.2); 
             font-weight: 300;
+            width: 100%;
         }
         
-        .invitation-text { font-size: 13px; color: #e0e0e0; line-height: 1.7; margin: 12px 0; }
+        .invitation-text { font-size: 14px; color: #e0e0e0; line-height: 1.8; margin: 15px 0; }
         
         /* CALENDAR */
-        .calendar-title { color: #e4b27a; margin-top: 18px; font-size: 15px; font-weight: 700; }
+        .calendar-title { color: #e4b27a; margin-top: 20px; font-size: 16px; font-weight: 700; }
         .calendar { 
             display: grid; 
             grid-template-columns: repeat(7, 1fr); 
-            gap: 4px; 
-            margin: 12px 0; 
-            background: rgba(0, 0, 0, 0.3); 
-            padding: 10px 6px; 
-            border-radius: 14px; 
-            font-size: 12px; 
-            border: 1px solid rgba(228, 178, 122, 0.15); 
+            gap: 5px; 
+            margin: 15px 0; 
+            background: rgba(0, 0, 0, 0.35); 
+            padding: 14px 10px; 
+            border-radius: 16px; 
+            font-size: 13px; 
+            border: 1px solid rgba(228, 178, 122, 0.2); 
+            width: 100%;
         }
-        .calendar div { padding: 6px 0; border-radius: 8px; }
+        .calendar div { padding: 8px 0; border-radius: 8px; }
         .calendar .day-header { font-weight: 700; color: #e4b27a; }
         .calendar .active-day { 
             background: linear-gradient(135deg, #b81d24, #ef4753); 
             color: white; 
             font-weight: 700; 
-            box-shadow: 0 0 10px rgba(239, 71, 83, 0.6);
+            box-shadow: 0 0 12px rgba(239, 71, 83, 0.7);
         }
 
         /* SCHEDULE */
-        .schedule { margin-top: 20px; text-align: right; border-top: 1px dashed rgba(228, 178, 122, 0.3); padding-top: 15px; }
-        .schedule h3 { text-align: center; color: #e4b27a; margin-bottom: 14px; font-size: 15px; font-weight: 700; }
+        .schedule { margin-top: 20px; text-align: right; border-top: 1px dashed rgba(228, 178, 122, 0.3); padding-top: 20px; width: 100%; }
+        .schedule h3 { text-align: center; color: #e4b27a; margin-bottom: 15px; font-size: 16px; font-weight: 700; }
         
         .schedule-item { 
             display: flex; 
             justify-content: space-between; 
             align-items: center;
             margin-bottom: 10px; 
-            font-size: 12px; 
+            font-size: 13px; 
             color: #f1f1f1; 
             background: rgba(255, 255, 255, 0.04); 
-            padding: 10px 14px; 
-            border-radius: 10px; 
-            border-right: 3px solid #e4b27a; 
+            padding: 12px 16px; 
+            border-radius: 12px; 
+            border-right: 4px solid #e4b27a; 
         }
         .schedule-item span:last-child { color: #e4b27a; font-weight: 600; direction: ltr; }
 
         .location-box { 
-            margin-top: 18px; 
-            padding: 12px; 
+            margin-top: 20px; 
+            padding: 15px; 
             background: rgba(228, 178, 122, 0.08); 
             border: 1px solid rgba(228, 178, 122, 0.3);
-            border-radius: 12px; 
-            font-size: 13px; 
+            border-radius: 14px; 
+            font-size: 14px; 
             color: #e4b27a; 
             font-weight: 700; 
+            width: 100%;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -291,50 +294,60 @@
 
 <div class="petals-container" id="petals"></div>
 
-<div class="container" id="mainContainer">
-    <div class="envelope-wrapper">
-        <div class="envelope-back"></div>
-        <div class="flap-top"></div>
-        <div class="flap-left"></div>
-        <div class="flap-right"></div>
-        <div class="flap-bottom"></div>
-        
-        <div class="wax-seal" onclick="openEnvelope()">R & S</div>
-        <div class="seal-text">داگرە بۆ کردنەوەی نامەکە 🌸</div>
-
-        <!-- INSIDE CARD -->
-        <div class="card-content">
-            <p class="top-subtitle">WEDDING INVITATION</p>
-            <div class="names">ڕامان & سارا</div>
+<div class="main-wrapper">
+    <div class="envelope-container" id="envelopeContainer">
+        <div class="envelope">
+            <div class="flap-top"></div>
+            <div class="flap-left"></div>
+            <div class="flap-right"></div>
+            <div class="flap-bottom"></div>
             
-            <div class="verse">
-                «وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً»
-            </div>
+            <div class="wax-seal" onclick="openEnvelope()">R & S</div>
+            <div class="seal-text">داگرە بۆ کردنەوەی نامەکە 🌸</div>
 
-            <p class="invitation-text">
-                بەخۆشحاڵییەوە بانگێشتتان دەکەین بۆ ئاهەنگی هاوسەرگیریمان، ئامادەبوونتان ڕازێنەرەوەی ئاهەنگەکەمان دەبێت.
-            </p>
+            <!-- INSIDE CARD CONTENT -->
+            <div class="card-content">
+                <!-- GULI SEREWE -->
+                <svg class="floral-top" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100 20C80 20 60 5 30 15C10 20 0 35 0 35" stroke="#e4b27a" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M100 20C120 20 140 5 170 15C190 20 200 35 200 35" stroke="#e4b27a" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="100" cy="20" r="5" fill="#e4b27a"/>
+                    <circle cx="85" cy="15" r="3" fill="#ffb4a2"/>
+                    <circle cx="115" cy="15" r="3" fill="#ffb4a2"/>
+                </svg>
 
-            <div class="calendar-title">مانگی ٨ی ٢٠٢٦</div>
-            <div class="calendar">
-                <div class="day-header">ش</div><div class="day-header">ی</div><div class="day-header">د</div><div class="day-header">چ</div><div class="day-header">پ</div><div class="day-header">ج</div><div class="day-header">ش</div>
-                <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
-                <div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div>
-                <div class="active-day">15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div>
-                <div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div><div>28</div>
-                <div>29</div><div>30</div><div>31</div>
-            </div>
+                <p class="top-subtitle">WEDDING INVITATION</p>
+                <div class="names">ڕامان & سارا</div>
+                
+                <div class="verse">
+                    «وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً»
+                </div>
 
-            <div class="schedule">
-                <h3>خشتەی بەرنامەکان</h3>
-                <div class="schedule-item"><span>کۆبوونەوەی میوانان</span> <span>04:00 PM</span></div>
-                <div class="schedule-item"><span>هاتنی بووک و زاوا</span> <span>05:00 PM</span></div>
-                <div class="schedule-item"><span>پێشکەشکردنی شیرینی</span> <span>06:00 PM</span></div>
-                <div class="schedule-item"><span>کۆتایی ئاهەنگ</span> <span>08:00 PM</span></div>
-            </div>
+                <p class="invitation-text">
+                    بەخۆشحاڵییەوە بانگێشتتان دەکەین بۆ ئاهەنگی هاوسەرگیریمان، ئامادەبوونتان ڕازێنەرەوەی ئاهەنگەکەمان دەبێت.
+                </p>
 
-            <div class="location-box">
-                📍 شوێن: هۆڵی ئاهەنگەکان
+                <div class="calendar-title">مانگی ٨ی ٢٠٢٦</div>
+                <div class="calendar">
+                    <div class="day-header">ش</div><div class="day-header">ی</div><div class="day-header">د</div><div class="day-header">چ</div><div class="day-header">پ</div><div class="day-header">ج</div><div class="day-header">ش</div>
+                    <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+                    <div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div>
+                    <div class="active-day">15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div>
+                    <div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div><div>28</div>
+                    <div>29</div><div>30</div><div>31</div>
+                </div>
+
+                <div class="schedule">
+                    <h3>خشتەی بەرنامەکان</h3>
+                    <div class="schedule-item"><span>کۆبوونەوەی میوانان</span> <span>04:00 PM</span></div>
+                    <div class="schedule-item"><span>هاتنی بووک و زاوا</span> <span>05:00 PM</span></div>
+                    <div class="schedule-item"><span>پێشکەشکردنی شیرینی</span> <span>06:00 PM</span></div>
+                    <div class="schedule-item"><span>کۆتایی ئاهەنگ</span> <span>08:00 PM</span></div>
+                </div>
+
+                <div class="location-box">
+                    📍 شوێن: هۆڵی ئاهەنگەکان
+                </div>
             </div>
         </div>
     </div>
@@ -342,16 +355,16 @@
 
 <script>
     function openEnvelope() {
-        document.getElementById('mainContainer').classList.add('open');
+        document.getElementById('envelopeContainer').classList.add('open');
     }
 
     // PETALS ANIMATION
     const petalsContainer = document.getElementById('petals');
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 30; i++) {
         const petal = document.createElement('div');
         petal.classList.add('petal');
         petal.style.left = Math.random() * 100 + 'vw';
-        petal.style.animationDuration = Math.random() * 5 + 5 + 's';
+        petal.style.animationDuration = Math.random() * 5 + 6 + 's';
         petal.style.animationDelay = Math.random() * 5 + 's';
         petal.style.width = Math.random() * 12 + 8 + 'px';
         petal.style.height = Math.random() * 12 + 8 + 'px';
