@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بانگێشتنامەی هاوسەرگیری - ڕامان & سارا</title>
+    <!-- PHONTI KORDI NAAYAB -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
-            font-family: 'Tahoma', sans-serif; 
-            background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
+            font-family: 'Vazirmatn', sans-serif; 
+            background: linear-gradient(135deg, #120b18, #2a1226, #120b18);
             min-height: 100vh; 
             display: flex; 
             justify-content: center; 
@@ -16,6 +21,7 @@
             overflow-x: hidden; 
             padding: 15px; 
             position: relative;
+            color: #f1f1f1;
         }
 
         /* BANGRONDI GULAKAN */
@@ -32,9 +38,9 @@
 
         .petal {
             position: absolute;
-            background: #ffb7c5;
+            background: #e5989b;
             border-radius: 150% 0 150% 0;
-            opacity: 0.7;
+            opacity: 0.6;
             animation: animate-petal 10s linear infinite;
         }
 
@@ -44,7 +50,7 @@
                 top: -10%;
                 transform: translateX(0) rotate(0deg);
             }
-            10% { opacity: 0.8; }
+            10% { opacity: 0.7; }
             100% {
                 opacity: 0;
                 top: 100%;
@@ -52,85 +58,138 @@
             }
         }
 
-        .container { width: 100%; max-width: 380px; position: relative; z-index: 10; }
+        .container { width: 100%; max-width: 390px; position: relative; z-index: 10; }
         
         /* BERGI NAMAKA */
         .envelope { 
-            background: rgba(255, 255, 255, 0.9); 
-            backdrop-filter: blur(5px);
-            border: 2px solid #e0a96d; 
-            border-radius: 20px; 
+            background: rgba(30, 20, 32, 0.85); 
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(228, 178, 122, 0.4); 
+            border-radius: 24px; 
             padding: 50px 20px; 
             text-align: center; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
             cursor: pointer; 
-            transition: transform 0.3s; 
+            transition: all 0.3s ease; 
         }
-        .envelope:hover { transform: scale(1.02); }
+        .envelope:hover { transform: translateY(-3px); border-color: #e4b27a; }
         
         .wax-seal { 
             width: 85px; 
             height: 85px; 
-            background: radial-gradient(circle, #8b0000, #5c0000); 
-            color: #dfb15b; 
+            background: radial-gradient(circle, #8b1e2b, #4a0e15); 
+            color: #e4b27a; 
             border-radius: 50%; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
             font-size: 24px; 
-            font-weight: bold; 
+            font-weight: 700; 
             margin: 0 auto 20px; 
-            border: 3px solid #b8860b; 
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3); 
-            font-family: serif; 
+            border: 2px solid #e4b27a; 
+            box-shadow: 0 0 20px rgba(228, 178, 122, 0.3); 
         }
         
         .btn-open { 
-            background: #8b0000; 
-            color: #fff; 
+            background: linear-gradient(135deg, #e4b27a, #b88248); 
+            color: #120b18; 
             border: none; 
-            padding: 12px 28px; 
+            padding: 12px 30px; 
             border-radius: 25px; 
             font-size: 15px; 
+            font-weight: 700;
             cursor: pointer; 
             margin-top: 15px; 
-            font-family: 'Tahoma', sans-serif; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+            font-family: 'Vazirmatn', sans-serif; 
+            box-shadow: 0 4px 15px rgba(228, 178, 122, 0.3); 
+            transition: 0.3s;
         }
 
         /* NAWAKHI KARTAKA */
         .card-content { 
             display: none; 
-            background: rgba(255, 255, 255, 0.95); 
-            backdrop-filter: blur(10px);
-            border-radius: 20px; 
+            background: rgba(23, 16, 26, 0.92); 
+            backdrop-filter: blur(15px);
+            border-radius: 24px; 
             padding: 30px 20px; 
             text-align: center; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2); 
-            border: 1px solid #f2d6dc; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6); 
+            border: 1px solid rgba(228, 178, 122, 0.25); 
             animation: fadeIn 0.8s ease-in-out; 
         }
         
-        .top-subtitle { color: #8b0000; font-size: 14px; font-weight: bold; letter-spacing: 1px; }
-        .names { font-size: 28px; color: #8b0000; font-weight: bold; margin: 15px 0; font-family: serif; }
+        .top-subtitle { color: #e4b27a; font-size: 13px; font-weight: 600; letter-spacing: 2px; }
+        .names { font-size: 32px; color: #ffb4a2; font-weight: 800; margin: 15px 0; text-shadow: 0 0 10px rgba(255, 180, 162, 0.2); }
         
-        .verse { font-size: 12px; color: #555; line-height: 1.8; margin: 15px 0; padding: 12px; background: #fffafb; border-radius: 12px; border: 1px solid #f8e1e7; }
+        .verse { 
+            font-size: 13px; 
+            color: #d1d1d1; 
+            line-height: 1.9; 
+            margin: 18px 0; 
+            padding: 14px; 
+            background: rgba(255, 255, 255, 0.03); 
+            border-radius: 14px; 
+            border: 1px solid rgba(228, 178, 122, 0.15); 
+            font-weight: 300;
+        }
         
-        .invitation-text { font-size: 13px; color: #444; line-height: 1.7; margin: 15px 0; }
+        .invitation-text { font-size: 14px; color: #e0e0e0; line-height: 1.8; margin: 15px 0; font-weight: 400; }
         
         /* ROZHZHMR */
-        .calendar-title { color: #8b0000; margin-top: 25px; font-size: 15px; font-weight: bold; }
-        .calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin: 15px 0; background: #fff5f7; padding: 12px 8px; border-radius: 12px; font-size: 12px; border: 1px solid #f2d6dc; }
-        .calendar div { padding: 6px 0; border-radius: 50%; }
-        .calendar .day-header { font-weight: bold; color: #8b0000; }
-        .calendar .active-day { background: #8b0000; color: white; font-weight: bold; }
+        .calendar-title { color: #e4b27a; margin-top: 25px; font-size: 16px; font-weight: 700; }
+        .calendar { 
+            display: grid; 
+            grid-template-columns: repeat(7, 1fr); 
+            gap: 6px; 
+            margin: 15px 0; 
+            background: rgba(0, 0, 0, 0.25); 
+            padding: 14px 10px; 
+            border-radius: 16px; 
+            font-size: 13px; 
+            border: 1px solid rgba(258, 178, 122, 0.15); 
+        }
+        .calendar div { padding: 8px 0; border-radius: 10px; font-weight: 400; }
+        .calendar .day-header { font-weight: 700; color: #e4b27a; }
+        .calendar .active-day { 
+            background: linear-gradient(135deg, #b81d24, #ef4753); 
+            color: white; 
+            font-weight: 700; 
+            box-shadow: 0 0 12px rgba(239, 71, 83, 0.6);
+        }
 
         /* KHSHI BARNAMAKAN */
-        .schedule { margin-top: 25px; text-align: right; border-top: 1px dashed #e0a96d; padding-top: 20px; }
-        .schedule h3 { text-align: center; color: #8b0000; margin-bottom: 15px; font-size: 16px; }
-        .schedule-item { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 13px; color: #333; background: #fff5f7; padding: 10px 14px; border-radius: 10px; border-right: 3px solid #8b0000; }
+        .schedule { margin-top: 25px; text-align: right; border-top: 1px dashed rgba(228, 178, 122, 0.3); padding-top: 20px; }
+        .schedule h3 { text-align: center; color: #e4b27a; margin-bottom: 18px; font-size: 16px; font-weight: 700; }
+        
+        .schedule-item { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            margin-bottom: 12px; 
+            font-size: 13px; 
+            color: #f1f1f1; 
+            background: rgba(255, 255, 255, 0.04); 
+            padding: 12px 16px; 
+            border-radius: 12px; 
+            border-right: 4px solid #e4b27a; 
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        .schedule-item span:last-child {
+            color: #e4b27a;
+            font-weight: 600;
+            direction: ltr;
+        }
 
-        .location-box { margin-top: 20px; padding: 12px; background: #fff5f7; border-radius: 10px; font-size: 13px; color: #8b0000; font-weight: bold; }
+        .location-box { 
+            margin-top: 22px; 
+            padding: 14px; 
+            background: rgba(228, 178, 122, 0.08); 
+            border: 1px solid rgba(228, 178, 122, 0.3);
+            border-radius: 14px; 
+            font-size: 14px; 
+            color: #e4b27a; 
+            font-weight: 700; 
+        }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(15px); }
@@ -147,7 +206,7 @@
     <!-- BERGI NAMAKA -->
     <div class="envelope" id="envelope" onclick="openCard()">
         <div class="wax-seal">R & S</div>
-        <p style="color: #8b0000; font-size: 15px; margin-bottom: 10px; font-weight: bold;">🌸 بانگێشتنامەی هاوسەرگیری 🌸</p>
+        <p style="color: #e4b27a; font-size: 16px; margin-bottom: 10px; font-weight: 700;">🌸 بانگێشتنامەی هاوسەرگیری 🌸</p>
         <button class="btn-open">کلیک بکە بۆ بەشداریبوون</button>
     </div>
 
@@ -176,10 +235,10 @@
 
         <div class="schedule">
             <h3>خشتەی بەرنامەکان</h3>
-            <div class="schedule-item"><span>کۆبوونەوەی میوانان:</span> <span>04:00 PM</span></div>
-            <div class="schedule-item"><span>هاتنی بووک و زاوا:</span> <span>05:00 PM</span></div>
-            <div class="schedule-item"><span>پێشکەشکردنی شیرینی:</span> <span>06:00 PM</span></div>
-            <div class="schedule-item"><span>کۆتایی ئاهەنگ:</span> <span>08:00 PM</span></div>
+            <div class="schedule-item"><span>کۆبوونەوەی میوانان</span> <span>04:00 PM</span></div>
+            <div class="schedule-item"><span>هاتنی بووک و زاوا</span> <span>05:00 PM</span></div>
+            <div class="schedule-item"><span>پێشکەشکردنی شیرینی</span> <span>06:00 PM</span></div>
+            <div class="schedule-item"><span>کۆتایی ئاهەنگ</span> <span>08:00 PM</span></div>
         </div>
 
         <div class="location-box">
