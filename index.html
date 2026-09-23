@@ -46,7 +46,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(circle, #22101e 0%, #080307 100%);
+            background: radial-gradient(circle, #1a0c17 0%, #050205 100%);
         }
 
         .envelope-container {
@@ -61,37 +61,27 @@
             width: 100%;
             height: 100%;
             position: relative;
-            background: #f7f0e8;
+            background: #f7f1eb;
             overflow: hidden;
             box-shadow: 0 0 50px rgba(0,0,0,0.9);
-        }
-
-        /* EMBOSSED LACE PATTERN BACKGROUND */
-        .lace-pattern {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            opacity: 0.85;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23ffffff' fill-opacity='0.9'%3E%3Ccircle cx='40' cy='20' r='3'/%3E%3Ccircle cx='32' cy='25' r='2.5'/%3E%3Ccircle cx='48' cy='25' r='2.5'/%3E%3Cpath d='M40 25 C30 35 20 25 15 40 C25 45 35 35 40 50 C45 35 55 45 65 40 C60 25 50 35 40 25 Z'/%3E%3Ccircle cx='20' cy='60' r='3'/%3E%3Ccircle cx='60' cy='60' r='3'/%3E%3C/g%3E%3C/svg%3E");
-            filter: drop-shadow(1px 1px 1px rgba(255,255,255,1)) drop-shadow(-1px -1px 1px rgba(160,140,130,0.4));
         }
 
         /* ENVELOPE FLAPS */
         .flap-top {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 50%;
-            background: linear-gradient(135deg, #fbf7f2 0%, #ebe0d5 100%);
+            background: linear-gradient(135deg, #f9f4ee 0%, #ece1d6 100%);
             clip-path: polygon(0 0, 100% 0, 50% 100%);
             transform-origin: top;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s, z-index 0.1s ease 0.8s;
             z-index: 5;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
         .flap-bottom {
             position: absolute;
             bottom: 0; left: 0; width: 100%; height: 52%;
-            background: linear-gradient(0deg, #f5ece2 0%, #e5d6c7 100%);
+            background: linear-gradient(0deg, #f5ece2 0%, #e2d2c3 100%);
             clip-path: polygon(0 100%, 100% 100%, 50% 0);
             z-index: 4;
         }
@@ -99,7 +89,7 @@
         .flap-left {
             position: absolute;
             top: 0; left: 0; width: 52%; height: 100%;
-            background: linear-gradient(90deg, #f2e7dc 0%, #dfcfc0 100%);
+            background: linear-gradient(90deg, #f0e5da 0%, #dccbc0 100%);
             clip-path: polygon(0 0, 0 100%, 100% 50%);
             z-index: 3;
         }
@@ -107,27 +97,54 @@
         .flap-right {
             position: absolute;
             top: 0; right: 0; width: 52%; height: 100%;
-            background: linear-gradient(-90deg, #f2e7dc 0%, #dfcfc0 100%);
+            background: linear-gradient(-90deg, #f0e5da 0%, #dccbc0 100%);
             clip-path: polygon(100% 0, 100% 100%, 0 50%);
             z-index: 3;
         }
 
-        /* WAX SEAL EXACTLY LIKE SECOND IMAGE */
+        /* EMBOSSED FLORAL BRANCHES (DETAILED SVG) */
+        .floral-branch {
+            position: absolute;
+            pointer-events: none;
+            z-index: 6;
+            filter: drop-shadow(1px 1px 0px rgba(255, 255, 255, 1)) drop-shadow(-1px -1px 2px rgba(120, 100, 90, 0.35));
+        }
+
+        .branch-top-left {
+            top: 3%; left: 4%; width: 140px; height: 320px;
+        }
+
+        .branch-top-right {
+            top: 3%; right: 4%; width: 140px; height: 320px;
+            transform: scaleX(-1);
+        }
+
+        .branch-bottom-left {
+            bottom: 4%; left: 6%; width: 130px; height: 220px;
+            transform: rotate(-15deg);
+        }
+
+        .branch-bottom-right {
+            bottom: 4%; right: 6%; width: 130px; height: 220px;
+            transform: scaleX(-1) rotate(-15deg);
+        }
+
+        /* WAX SEAL EXACTLY LIKE THE REFERENCE */
         .wax-seal {
             position: absolute;
             top: 50%; left: 50%;
             transform: translate(-50%, -55%);
-            width: 100px;
-            height: 95px;
-            background: radial-gradient(circle, #801823 0%, #4a0810 100%);
-            border-radius: 50% 48% 52% 49% / 49% 52% 48% 51%;
+            width: 105px;
+            height: 98px;
+            background: radial-gradient(circle, #851822 0%, #4a060d 100%);
+            border-radius: 48% 52% 51% 49% / 53% 47% 53% 47%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 3px solid #b38246;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7), inset 0 0 15px rgba(0,0,0,0.7);
+            border: 3px solid #c8965a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.65), inset 0 0 12px rgba(0,0,0,0.7);
             cursor: pointer;
-            z-index: 7;
+            z-index: 8;
             transition: all 0.4s ease;
         }
 
@@ -137,35 +154,35 @@
 
         .wax-seal-text {
             font-family: 'Great Vibes', cursive;
-            font-size: 34px;
-            color: #f7e7c4;
+            font-size: 36px;
+            color: #f7e2bd;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
             letter-spacing: 2px;
             direction: ltr;
             white-space: nowrap;
         }
 
-        /* "بیکەوە" BUTTON EXACTLY LIKE SECOND IMAGE */
+        /* "بیکەوە" BUTTON */
         .open-btn {
             position: absolute;
             top: calc(50% + 55px);
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.85);
-            color: #555;
-            padding: 8px 32px;
+            background: #ffffff;
+            color: #666;
+            padding: 8px 34px;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
             cursor: pointer;
-            z-index: 7;
-            border: 1px solid rgba(255, 255, 255, 0.9);
+            z-index: 8;
+            border: 1px solid #eaeaea;
             transition: all 0.3s ease;
         }
 
         .open-btn:hover {
-            background: #ffffff;
+            background: #fcfcfc;
             transform: translateX(-50%) scale(1.05);
         }
 
@@ -204,7 +221,7 @@
             z-index: 20;
         }
 
-        .open .flap-bottom, .open .flap-left, .open .flap-right, .open .lace-pattern {
+        .open .flap-bottom, .open .flap-left, .open .flap-right, .open .floral-branch {
             opacity: 0;
             transition: opacity 0.5s ease 0.6s;
         }
@@ -261,13 +278,66 @@
     <div class="envelope-container" id="envelopeContainer">
         <div class="envelope">
             
-            <!-- FLORAL LACE PATTERN EMBOSSED OVER ALL FLAPS -->
-            <div class="lace-pattern"></div>
-
             <div class="flap-top"></div>
             <div class="flap-left"></div>
             <div class="flap-right"></div>
             <div class="flap-bottom"></div>
+
+            <!-- HIGH-DETAIL EMBOSSED FLORAL BRANCHES -->
+            <svg class="floral-branch branch-top-left" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 200 Q 25 120 70 10" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+                <!-- Leaves -->
+                <path d="M22 150 C5 130 10 115 28 128 C40 140 32 155 22 150 Z" fill="#ffffff"/>
+                <path d="M32 100 C15 80 20 65 38 78 C50 90 42 105 32 100 Z" fill="#ffffff"/>
+                <path d="M48 50 C30 30 35 15 53 28 C65 40 58 55 48 50 Z" fill="#ffffff"/>
+                <!-- Flowers -->
+                <circle cx="70" cy="10" r="6" fill="#ffffff"/>
+                <circle cx="62" cy="18" r="4.5" fill="#ffffff"/>
+                <circle cx="78" cy="18" r="4.5" fill="#ffffff"/>
+                <circle cx="70" cy="24" r="4" fill="#ffffff"/>
+                <!-- Side sprigs -->
+                <path d="M24 140 Q 55 130 75 145" stroke="#ffffff" stroke-width="2"/>
+                <circle cx="75" cy="145" r="4" fill="#ffffff"/>
+                <circle cx="68" cy="140" r="3" fill="#ffffff"/>
+                <path d="M35 88 Q 65 78 82 92" stroke="#ffffff" stroke-width="2"/>
+                <circle cx="82" cy="92" r="4" fill="#ffffff"/>
+                <circle cx="75" cy="87" r="3" fill="#ffffff"/>
+            </svg>
+
+            <svg class="floral-branch branch-top-right" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 200 Q 25 120 70 10" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+                <path d="M22 150 C5 130 10 115 28 128 C40 140 32 155 22 150 Z" fill="#ffffff"/>
+                <path d="M32 100 C15 80 20 65 38 78 C50 90 42 105 32 100 Z" fill="#ffffff"/>
+                <path d="M48 50 C30 30 35 15 53 28 C65 40 58 55 48 50 Z" fill="#ffffff"/>
+                <circle cx="70" cy="10" r="6" fill="#ffffff"/>
+                <circle cx="62" cy="18" r="4.5" fill="#ffffff"/>
+                <circle cx="78" cy="18" r="4.5" fill="#ffffff"/>
+                <circle cx="70" cy="24" r="4" fill="#ffffff"/>
+                <path d="M24 140 Q 55 130 75 145" stroke="#ffffff" stroke-width="2"/>
+                <circle cx="75" cy="145" r="4" fill="#ffffff"/>
+                <circle cx="68" cy="140" r="3" fill="#ffffff"/>
+                <path d="M35 88 Q 65 78 82 92" stroke="#ffffff" stroke-width="2"/>
+                <circle cx="82" cy="92" r="4" fill="#ffffff"/>
+                <circle cx="75" cy="87" r="3" fill="#ffffff"/>
+            </svg>
+
+            <svg class="floral-branch branch-bottom-left" viewBox="0 0 100 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 150 Q 25 80 70 10" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M22 105 C5 90 10 78 28 88 Z" fill="#ffffff"/>
+                <path d="M32 60 C15 45 20 33 38 43 Z" fill="#ffffff"/>
+                <circle cx="70" cy="10" r="5" fill="#ffffff"/>
+                <circle cx="63" cy="16" r="3.5" fill="#ffffff"/>
+                <circle cx="76" cy="16" r="3.5" fill="#ffffff"/>
+            </svg>
+
+            <svg class="floral-branch branch-bottom-right" viewBox="0 0 100 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 150 Q 25 80 70 10" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M22 105 C5 90 10 78 28 88 Z" fill="#ffffff"/>
+                <path d="M32 60 C15 45 20 33 38 43 Z" fill="#ffffff"/>
+                <circle cx="70" cy="10" r="5" fill="#ffffff"/>
+                <circle cx="63" cy="16" r="3.5" fill="#ffffff"/>
+                <circle cx="76" cy="16" r="3.5" fill="#ffffff"/>
+            </svg>
 
             <!-- WAX SEAL WITH "R & S" -->
             <div class="wax-seal" onclick="openEnvelope()">
